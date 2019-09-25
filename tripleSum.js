@@ -4,7 +4,7 @@ b = [...new Set(b)].map(v=>{return{v:v, o:2}})
 c = [...new Set(c)].map(v=>{return{v:v, o:3}})
 
 let joint = []
-joint = joint.concat(a).concat(b).concat(c);
+joint = [...a,...b,...c]
 
 joint.sort((a,b) => {
     let d = a.v -b.v;
