@@ -1,29 +1,19 @@
-function isBalanced(s) {
-let arr = s.split('')
-let last = arr.length - 1
-for (let i = 0; i < arr.length; i++){
-    if(checkBalance(s[i], s[last])){
-        last --
-        continue
-    }else{
-        console.log('NO')
-        break
+isBalanced = (s) => {
+    let stack = []
+    let check = {'(':')','[':']','{':'}' }
+    
+    for (let i = 0 ; i < s.length ; i++){
+        if (s[i] ==='(' || s[i] === '{' || s[i] === '['){
+            stack.push(s[i])
+        }
+        else{
+            let last = stack.pop()
+            if(s[i] !== check[last]){return 'NO'}
+        }
+        console.log(stack)
     }
-    console.log('Yes')
-}
-}
-
-checkBalance = (front, back) =>{
-    if (front === '{' && back === '}') {
-        return true
-    }
-    if (front === '[' && back === ']'){
-        return true
-    }
-    if (front === '(' && back === ')'){
-        return true
-    }
-    else return false
+    if (stack.length !==0) {return 'NO'}
+    return 'YES'
 }
 
 let arr = '{[()]}{[(])}{{[[(())]]}}'
@@ -36,3 +26,7 @@ isBalanced = ([...str]) => {return str.reduce((count, cur) => {
 
     return count;
 }, 0) === 0 }
+
+['{', '[', '(', '{']
+last = "{"
+if(last != check ) break
